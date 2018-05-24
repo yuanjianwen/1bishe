@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        /*body {*/
+            /*background: #1A344B;*/
+        /*}*/
+
+        @font-face {
+            font-family: 'iconfont';
+            src: url('fonts/iconfont.eot');
+            src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+            url('fonts/iconfont.woff') format('woff'),
+            url('fonts/iconfont.ttf') format('truetype'),
+            url('fonts/iconfont.svg#iconfont') format('svg');
+        }
+
+        .ico {
+            font-family: 'iconfont';
+            font-size: 50px;
+            font-style: normal;
+            cursor: pointer;
+            color: black;
+        }
+
+        .clickMe {
+            font-size: 14px;
+            font-weight: 700;
+            color: #9D875D;
+            position: absolute;
+            top: -20px;
+            left: 60px;
+            animation: clickme 3s linear infinite;
+        }
+
+        @keyframes clickme {
+            0% {
+                left: 10%;
+                top:10%;
+            }
+            50% {
+                left: 0%;
+                top:-20%;
+            }
+            100%{
+                left:10%;
+                top:10%;
+            }
+        }
+    </style>
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        $(function () {
+            var timerId = null;
+            var indexNow = 0;
+            var len = $(".box-img").children().length;
+            $(".box-img>img:eq(0)").css("opacity", "1");
+            $(".box1").mouseover(function () {
+                $("#left").css("display", "block");
+                $("#right").css("display", "block");
+                clearInterval(timerId);
+                timerId = null;
+            });
+            timerId = setInterval(autoPlay, 1000);
+            $(".box1").mouseout(function () {
+                $("#left").css("display", "none");
+                $("#right").css("display", "none");
+                timerId = setInterval(autoPlay, 1000);
+            });
+            $("#LU>li").click(function () {
+                indexNow = $(this).index();
+                $(this).addClass("current1").siblings("li").removeClass("current1");
+                $(".box-img>img:eq(" + indexNow + ")").animate({"opacity": 1}).siblings("img").animate({"opacity": 0});
+            });
+            $("#left").click(function () {
+                indexNow--;
+                if (indexNow == -1) {
+                    indexNow = 4;
+                }
+                $("#LU>li:eq(" + indexNow + ")").click();
+            });
+            $("#right").click(function () {
+                indexNow++;
+                if (indexNow == 5) {
+                    indexNow = 0;
+                }
+                $("#LU>li:eq(" + indexNow + ")").click();
+            });
+            function autoPlay() {
+                indexNow++;
+                if (indexNow >= len) {
+                    indexNow = 0;
+                }
+                $("#LU>li:eq(" + indexNow + ")").addClass("current1").siblings("li").removeClass("current1");
+                $(".box-img>img:eq(" + indexNow + ")").animate({"opacity": 1}).siblings("img").animate({"opacity": 0});
+            }
+
+            $(".ico").click(function () {
+                $(".erweima").animate({"height": 125}, 1000, function () {
+                    $(".mark").show();
+                })
+            });
+            $(".mark").click(function () {
+                $(".erweima").animate({"height": 0}, 1000, function () {
+                    $(".mark").hide();
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+<!--导航栏部分开始-->
+<div class="nav">
+    <div class="nav-in w">
+        <div class="nav-in-log">
+            <img src="images/logo.png" height="90" alt="">
+        </div>
+        <div class="nav-in-r">
+            <ul id="navLan">
+                <li id="homepage" onclick="javascript:location.href = 'index.html'">HomePage</li>
+                <li id="login" onclick="javascript:location.href = 'login.html'">Login</li>
+                <li id="signup" onclick="javascript:location.href = 'signup.html'">Sign Up</li>
+                <li id="tradecenter" onclick="javascript:location.href = 'tradecenter.html'">Trade Center</li>
+                <li id="news" onclick="javascript:location.href = 'news.html'">News</li>
+                <li id="aboutus" onclick="javascript:location.href = 'aboutus.html'">About Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--导航栏部分结束-->
+<!--中间开始部分-->
+<div class="banner">
+    <div class="banner-in w">
+        <div class="banner-in-top">
+            <div class="banner-in-topl">
+                <i class="ico">&#xe602;</i>
+                <span class="clickMe">ClickMe</span>
+                <img src="images/erweima.jpg" alt="" class="erweima">
+                <span class="mark">
+                    ×
+                </span>
+            </div>
+            <div class="search">
+                <input type="text" class="search-l">
+                <button class="search-r">
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <div class="video">
+            <div class="video-l">
+                <div class="box1">
+                    <div class="box-img">
+                        <img src="gameimg/26_0_s2.png" alt="" width="916px" height="420px">
+                        <img src="gameimg/27_1_s2.png" alt="" width="916px" height="420px">
+                        <img src="gameimg/29_1_s2.png" alt="" width="916px" height="420px">
+                        <img src="gameimg/28_1_s2.png" alt="" width="916px" height="420px">
+                        <img src="gameimg/27_5_s2.png" alt="" width="916px" height="420px">
+                    </div>
+                    <ul id="LU">
+                        <li class="current1">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                    <span id="left"></span>
+                    <span id="right"></span>
+                </div>
+            </div>
+            <div class="video-r">
+                <div class="video-r-top">
+                    <span class="tv"></span>
+                    <span class="wenzi">Recommandation</span>
+                </div>
+                <div id="box" class="box">
+                    <ul class="sel" id="sel">
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/1_s1_s1.png" width="96px" height="54px" alt="">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/2_s1.png" width="96px" height="54px" alt="">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/3_s1.png" width="96px" height="54px" alt="">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/4_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/5_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/6_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/7_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/9_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/10_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/20_0_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/19_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/17_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/15_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/23_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                        <li>
+                            <div class="selImg">
+                                <img src="gameimg/21_1_s1.png" alt="" width="96px" height="54px">
+                            </div>
+                            <span>
+                                《虚幻争霸》 ：最美<br>
+                                MOBA战场，等待你带来
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="scroll" id="scroll">
+                        <div class="bar" id="bar">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--中间结束部分-->
+<!--推荐部分开始-->
+<div class="recommend">
+    <div class="rec-in w">
+        <div class="rec-in-l">
+            <div class="rec-second-Top">
+                <h1>New Goods</h1>
+                <div id="Span">
+                    <span class="span1">Bow</span>
+                    <span>Shield</span>
+                    <span>Sword</span>
+                    <span>Knife</span>
+                    <span>Others</span>
+                </div>
+            </div>
+                <span id="more">
+                    See More
+                </span>
+            <div id="uL">
+                <div class="uL1">
+                    <ul class="rec-second" id="shadow">
+                        <li>
+                            <img src="gameimg/1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">3.4万</span>
+                                <span class="pw2">4个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/2_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">3.4万</span>
+                                <span class="pw2">4个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/1_s1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">3.4万</span>
+                                <span class="pw2">4个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/25_0_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">3.4万</span>
+                                <span class="pw2">4个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <ul class="rec-second" id="shadow1">
+                        <li>
+                            <img src="gameimg/25_1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">3.4万</span>
+                                <span class="pw2">4个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/1_s1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">3.4万</span>
+                                <span class="pw2">4个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">3.4万</span>
+                                <span class="pw2">4个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/1_s1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">3.4万</span>
+                                <span class="pw2">4个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="uL2">
+                    <ul class="rec-second" id="shadow2">
+                        <li>
+                            <img src="gameimg/22_0_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">7.7万</span>
+                                <span class="pw2">1个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/21_1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">7.7万</span>
+                                <span class="pw2">1个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/26_0_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">7.7万</span>
+                                <span class="pw2">1个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/26_2_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">7.7万</span>
+                                <span class="pw2">1个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <ul class="rec-second" id="shadow3">
+                        <li>
+                            <img src="gameimg/24_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">7.7万</span>
+                                <span class="pw2">1个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/26_0_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">7.7万</span>
+                                <span class="pw2">1个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/26_2_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">7.7万</span>
+                                <span class="pw2">1个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/20_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">7.7万</span>
+                                <span class="pw2">1个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="uL3">
+                    <ul class="rec-second" id="shadow4">
+                        <li>
+                            <img src="gameimg/9_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">11.11万</span>
+                                <span class="pw2">2个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/11_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">11.11万</span>
+                                <span class="pw2">2个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/12_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">11.11万</span>
+                                <span class="pw2">2个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/8_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">11.11万</span>
+                                <span class="pw2">2个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <ul class="rec-second" id="shadow5">
+                        <li>
+                            <img src="gameimg/27_3_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">11.11万</span>
+                                <span class="pw2">2个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/29_1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">11.11万</span>
+                                <span class="pw2">2个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/29_0_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">11.11万</span>
+                                <span class="pw2">2个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/30_0_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">11.11万</span>
+                                <span class="pw2">2个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="uL4" id="shadow6">
+                    <ul class="rec-second">
+                        <li>
+                            <img src="gameimg/27_3_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">12.12万</span>
+                                <span class="pw2">3个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/27_4_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">12.12万</span>
+                                <span class="pw2">3个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/27_5_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">12.12万</span>
+                                <span class="pw2">3个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/27_6_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">12.12万</span>
+                                <span class="pw2">3个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <ul class="rec-second" id="shadow7">
+                        <li>
+                            <img src="gameimg/27_7_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">12.12万</span>
+                                <span class="pw2">3个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/27_8_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">12.12万</span>
+                                <span class="pw2">3个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/29_0_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">12.12万</span>
+                                <span class="pw2">3个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/29_1_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">12.12万</span>
+                                <span class="pw2">3个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="uL5" id="shadow8">
+                    <ul class="rec-second">
+                        <li>
+                            <img src="gameimg/14_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">20.20万</span>
+                                <span class="pw2">9个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/6_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">20.20万</span>
+                                <span class="pw2">9个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/3_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">20.20万</span>
+                                <span class="pw2">9个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/4_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">20.20万</span>
+                                <span class="pw2">9个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <ul class="rec-second" id="shadow9">
+                        <li>
+                            <img src="gameimg/21_0_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">20.20万</span>
+                                <span class="pw2">9个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/18_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">20.20万</span>
+                                <span class="pw2">9个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/16_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">20.20万</span>
+                                <span class="pw2">9个月以前</span>
+                            </p>
+                        </li>
+                        <li>
+                            <img src="gameimg/14_s1.png" width="190px" height="107px" alt="">
+                            <p>《虚幻争霸》 ：最美MOBA战场，等待你带来最激烈的战斗</p>
+                            <p class="pb">
+                                <span class="pl"></span>
+                                <span class="pw1">20.20万</span>
+                                <span class="pw2">9个月以前</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="rec-in-r">
+            <div class="rec-in-rTop" id="recR">
+                <h1>Sales</h1>
+                <ul>
+                    <li class="current">Today</li>
+                    <li>Week</li>
+                    <li>Month</li>
+                </ul>
+            </div>
+            <div class="content" id="Content">
+                <ul class="contentShow">
+                    <li style="height: 80px" class="paddF">
+                        <img src="gameimg/14_s1.png" alt="" width="142px" height="80px">
+                        <div class="san">
+                            <span>1</span>
+                        </div>
+                        <p>游戏录出CG大片!3A革新</p>
+                        <p>MOBA《虚幻争霸》12.14开启</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">49</span>
+                        </p>
+                    </li>
+                    <li class="paddTop" style="height: 96px">
+                        <img src="gameimg/27_2_s1.png" alt="" width="142px" height="80px">
+                        <div class="san1">
+                            <span>2</span>
+                        </div>
+                        <p>游戏录出CG大片!3A革新</p>
+                        <p>MOBA《虚幻争霸》12.14开启</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">49</span>
+                        </p>
+                    </li>
+                    <li class="paddTop" style="height: 96px">
+                        <img src="gameimg/23_s1.png" alt="" width="142px" height="80px">
+                        <div class="san2">
+                            <span>3</span>
+                        </div>
+                        <p>游戏录出CG大片!3A革新</p>
+                        <p>MOBA《虚幻争霸》12.14开启</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">49</span>
+                        </p>
+                    </li>
+                    <li>
+                        <span class="order">4</span>
+                        《虚幻争霸》丛林魔抢 英氪Zink宣...
+                        <span class="playH"></span>
+                        2
+                    </li>
+                    <li>
+                        <span class="order">5</span>
+                        《虚幻争霸》丛林魔抢 英氪Zink宣...
+                        <span class="playH"></span>
+                        11
+                    </li>
+                    <li>
+                        <span class="order">6</span>
+                        《虚幻争霸》丛林魔抢 英氪Zink宣...
+                        <span class="playH"></span>
+                        14
+                    </li>
+                    <li>
+                        <span class="order">7</span>
+                        《虚幻争霸》丛林魔抢 英氪Zink宣...
+                        <span class="playH"></span>
+                        31
+                    </li>
+                </ul>
+                <ul>
+                    <li style="height: 80px" class="paddF">
+                        <img src="gameimg/27_4_s1.png" alt="" width="142px" height="80px">
+                        <div class="san">
+                            <span>1</span>
+                        </div>
+                        <p>《虚幻争霸》:最美MOBA战场</p>
+                        <p>等待你带来最激烈的战斗</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">666</span>
+                        </p>
+                    </li>
+                    <li class="paddTop" style="height: 96px">
+                        <img src="gameimg/1_s1_s1.png" alt="" width="142px" height="80px">
+                        <div class="san1">
+                            <span>2</span>
+                        </div>
+                        <p>《虚幻争霸》:最美MOBA战场</p>
+                        <p>等待你带来最激烈的战斗</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">666</span>
+                        </p>
+                    </li>
+                    <li class="paddTop" style="height: 96px">
+                        <img src="gameimg/26_0_s1.png" alt="" width="142px" height="80px">
+                        <div class="san2">
+                            <span>3</span>
+                        </div>
+                        <p>《虚幻争霸》:最美MOBA战场</p>
+                        <p>等待你带来最激烈的战斗</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">666</span>
+                        </p>
+                    </li>
+                    <li>
+                        <span class="order">4</span>
+                        史诗MOBA《虚幻争霸》地图升级...
+                        <span class="playH"></span>
+                        200
+                    </li>
+                    <li>
+                        <span class="order">5</span>
+                        史诗MOBA《虚幻争霸》地图升级...
+                        <span class="playH"></span>
+                        110
+                    </li>
+                    <li>
+                        <span class="order">6</span>
+                        史诗MOBA《虚幻争霸》地图升级...
+                        <span class="playH"></span>
+                        140
+                    </li>
+                    <li>
+                        <span class="order">7</span>
+                        史诗MOBA《虚幻争霸》地图升级...
+                        <span class="playH"></span>
+                        310
+                    </li>
+                </ul>
+                <ul>
+                    <li style="height: 80px" class="paddF">
+                        <img src="gameimg/25_0_s1.png" alt="" width="142px" height="80px">
+                        <div class="san">
+                            <span>1</span>
+                        </div>
+                        <p>《虚幻争霸》齐天大圣孙悟空</p>
+                        <p>Wukong宣传视频</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">666</span>
+                        </p>
+                    </li>
+                    <li class="paddTop" style="height: 96px">
+                        <img src="gameimg/27_1_s1.png" alt="" width="142px" height="80px">
+                        <div class="san1">
+                            <span>2</span>
+                        </div>
+                        <p>《虚幻争霸》齐天大圣孙悟空</p>
+                        <p>Wukong宣传视频</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">666</span>
+                        </p>
+                    </li>
+                    <li class="paddTop" style="height: 96px">
+                        <img src="gameimg/22_s1.png" alt="" width="142px" height="80px">
+                        <div class="san2">
+                            <span>3</span>
+                        </div>
+                        <p>《虚幻争霸》齐天大圣孙悟空</p>
+                        <p>Wukong宣传视频</p>
+                        <p>
+                            <span class="pl"></span>
+                            <span class="pW">666</span>
+                        </p>
+                    </li>
+                    <li>
+                        <span class="order">4</span>
+                        《虚幻争霸》年度版冰雪奇缘...
+                        <span class="playH"></span>
+                        100
+                    </li>
+                    <li>
+                        <span class="order">5</span>
+                        《虚幻争霸》年度版冰雪奇缘...
+                        <span class="playH"></span>
+                        100
+                    </li>
+                    <li>
+                        <span class="order">6</span>
+                        《虚幻争霸》年度版冰雪奇缘...
+                        <span class="playH"></span>
+                        100
+                    </li>
+                    <li>
+                        <span class="order">7</span>
+                        《虚幻争霸》年度版冰雪奇缘...
+                        <span class="playH"></span>
+                        100
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--推荐部分结束-->
+<!-- 	底部开始 -->
+<div class="footer">
+    <div class="footer-in w">
+        <div class="wei">
+            <div class="footer-in-l">
+                <h4>Leave A Message Online</h4>
+                <textarea placeholder="Input your contents please:"></textarea>
+                <input type="submit" value="" />
+            </div>
+            <div class="footer-in-r">
+                <h4>Contact Us:</h4>
+                <p>Phone Number：(+853)60944070</p>
+                <p>Email：gamemarket@gamil.com</p>
+                <p>Address：MUST,WeilongRoad,Macao</p>
+            </div>
+        </div>
+        <div class="footer-in-b">
+            <div>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Friendly Links</a>
+            <a href="#">Join Us</a>
+            </div>
+            <p>Copyright©2018 Upay. All Rights Reserved By Our Company</p>
+        </div>
+    </div>
+
+</div>
+<!-- 底部结束 -->
+<!--script部分-->
+<script src="js/common.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .nav {
+            width: 100%;
+            height: 90px;
+            background: url("images/2_nav-bg.png") no-repeat;
+            overflow: hidden;
+        }
+
+        .nav-in {
+            height: 90px;
+        }
+
+        .nav-in-log {
+            float: left;
+            width: 300px;
+            height: 90px;
+            background-color: green;
+        }
+
+        .nav-in-r {
+            float: right;
+        }
+
+        .nav-in-r li {
+            float: left;
+            font-size: 24px;
+            color: white;
+            line-height: 90px;
+            margin-left: 10px;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        #navLan li:hover {
+            background-color: #9D875D;
+            color: black;
+        }
+        #about{
+            height: 714px;
+            width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        .tel{
+            width: 150px;
+           line-height: 39px;
+            display: inline-block;
+            background: url("images/tel_s1.png") no-repeat;
+            margin-left: 100px;
+            padding-left: 50px;
+            font-size: 16px;
+            cursor: pointer;
+
+        }
+        .maile{
+            width: 150px;
+            line-height: 39px;
+            display: inline-block;
+            background: url("images/maile_s1.png") no-repeat;
+            margin-left: 150px;
+            padding-left: 50px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .address{
+            width: 150px;
+            line-height: 39px;
+            display: inline-block;
+            background: url("images/address_s1.png") no-repeat;
+            margin-left: 150px;
+            padding-left: 50px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .footer-in-b{
+            margin-top: 20px;
+            background: url("images/2_nav-bg.png") no-repeat;
+            color: white;
+            font-weight: 700;
+            padding-top: 20px;
+            letter-spacing: 1px;
+        }
+        .footer-in-b div {
+            text-align: center;
+        }
+        .footer-in-b div a{
+            font-size: 12px;
+            margin:0 17px;
+            color: white;
+        }
+        .footer-in-b p{
+            font-size: 12px;
+            text-align: center;
+            line-height: 36px;
+        }
+
+    </style>
+</head>
+<body>
+<!--导航栏部分开始-->
+<div class="nav">
+    <div class="nav-in w">
+        <div class="nav-in-log">
+            <img src="images/logo.png" height="90" alt="">
+        </div>
+        <div class="nav-in-r">
+            <ul id="navLan">
+                <li id = "HomePage" onclick = "javascript:location.href = 'index.html'">HomePage</li>
+                <li id = "Log_In" onclick = "javascript:location.href = 'login.html'">Login</li>
+                <li id = "Sign_Up" onclick = "javascript:location.href = 'signup.html'">Sign Up</li>
+                <li id = "Trade_Center" onclick = "javascript:location.href = 'tradecenter.html'">Trade Center</li>
+                <li id = "News" onclick = "javascript:location.href = 'news.html'">News</li>
+                <li id = "About_Us" onclick = "javascript:location.href = 'aboutus.html'">About Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--导航栏部分结束-->
+<div id="about">
+    <div class="about-Top">
+        <span class="tel">
+            Phone Number：(+853)60944070
+        </span>
+        <span class="maile">
+            Email：gamemarket@gamil.com
+        </span>
+        <span class="address">
+            Address：MUST,WeilongRoad,Macao
+        </span>
+    </div>
+    <img src="images/ditu.jpg" alt="">
+</div>
+<div class="footer-in-b">
+    <div>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Friendly Links</a>
+        <a href="#">Join Us</a>
+    </div>
+    <p>Copyright©2018 Upay. All Rights Reserved By Our Company</p>
+</div>
+</body>
+</html>

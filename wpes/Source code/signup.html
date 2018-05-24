@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        /*body {*/
+            /*background: #1A344B;*/
+        /*}*/
+
+        .nav {
+            width: 100%;
+            height: 90px;
+            background: url("images/2_nav-bg.png") no-repeat;
+            overflow: hidden;
+        }
+
+        .nav-in {
+            height: 90px;
+        }
+
+        .nav-in-log {
+            float: left;
+            width: 300px;
+            height: 90px;
+            background-color: green;
+        }
+
+        .nav-in-r {
+            /*background-color: red;*/
+            float: right;
+        }
+
+        .nav-in-r li {
+            float: left;
+            font-size: 24px;
+            color: white;
+            line-height: 90px;
+            margin-left: 10px;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        #navLan li:hover {
+            background-color: #9D875D;
+            color: black;
+        }
+
+        #signupbox {
+            margin: 20px auto;
+            width: 380px;
+            height: 600px;
+            background-color: #9D875D;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #signupbox h1 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-top: 5px;
+        }
+
+        #signupbox hr {
+            width: 310px;
+            border: .5px solid black;
+        }
+
+        #signupbox input {
+            width: 310px;
+            height: 50px;
+            background-color: #252526;
+            margin-top: 20px;
+            color: white;
+            font-size: 18px;
+            box-sizing: border-box;
+            padding-left: 6px;
+        }
+
+        #signupbox .refresh {
+            width: 260px;
+            margin-left: -50px;
+        }
+
+        #signupbox span {
+            font-size: 18px;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: absolute;
+            bottom: 150px;
+            right: 32px;
+        }
+
+        #signupbox input[type="submit"] {
+            width: 230px;
+            height: 56px;
+            font-size: 20px;
+            letter-spacing: 6px;
+        }
+        .footer-in-b{
+            margin-top: 20px;
+            background: url("images/2_nav-bg.png") no-repeat;
+            color: white;
+            font-weight: 700;
+            padding-top: 20px;
+            letter-spacing: 1px;
+        }
+        .footer-in-b div {
+            text-align: center;
+        }
+        .footer-in-b div a{
+            font-size: 12px;
+            margin:0 17px;
+            color: white;
+        }
+        .footer-in-b p{
+            font-size: 12px;
+            text-align: center;
+            line-height: 36px;
+        }
+    </style>
+</head>
+<body>
+<!--导航栏部分开始-->
+<div class="nav">
+    <div class="nav-in w">
+        <div class="nav-in-log">
+            <img src="images/logo.png" height="90" alt="">
+        </div>
+        <div class="nav-in-r">
+            <ul id="navLan">
+                <li id="homepage" onclick="javascript:location.href = 'index.html'">HomePage</li>
+                <li id="login" onclick="javascript:location.href = 'login.html'">Login</li>
+                <li id="signup" onclick="javascript:location.href = 'signup.html'">Sign Up</li>
+                <li id="tradecenter" onclick="javascript:location.href = 'tradecenter.html'">Trade Center</li>
+                <li id="news" onclick="javascript:location.href = 'news.html'">News</li>
+                <li id="aboutus" onclick="javascript:location.href = 'aboutus.html'">About Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--导航栏部分结束-->
+<div id="signupbox">
+    <h1>Sign Up</h1>
+    <hr/>
+    <input type="text" class="Text" placeholder="Creat a new account">
+    <input type="password" class="passWord" placeholder="Choose a password">
+    <input type="password" class="passWord1" placeholder="Re-enter password">
+    <input type="email" placeholder="Input your email address">
+    <input type="tel" placeholder="Input your cellphone number">
+    <input type="" class="refresh"> <span>Refresh</span>
+    <input type="submit" value="Sign Up">
+
+</div>
+<div class="footer-in-b">
+    <div>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Friendly Links</a>
+        <a href="#">Join Us</a>
+    </div>
+    <p>Copyright©2018 Upay. All Rights Reserved By Our Company</p>
+</div>
+</body>
+</html>

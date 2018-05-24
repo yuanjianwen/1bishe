@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .chaTu{
+            background: url(images/1-sprites.png) no-repeat;
+        }
+        .shangJie,
+        .zhongJie,
+        .xiaJie{
+            width:620px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .saoMa{
+            width: 1200px;
+            height: 215px;
+            background-color: #fff;
+            margin-top: 30px;
+        }
+        .box{
+            width: 1000px;
+            height: 215px;
+            margin-left:200px;
+        }
+        .weixin,
+        .weibo,
+        .buluo,
+        .luntan{
+            margin-top: 26px;
+            height: 183px;
+            width: 132px;
+            margin-right: 113px;
+            float: left;
+            position: relative;
+        }
+        .hidden{
+            width: 130px;
+            height: 130px;
+            margin-top:30px;
+            position: relative;
+            top:-85px;
+            left:5px;
+            display: none;
+            border: 1px solid black;
+            background:url(images/erweima1.jpg) no-repeat;
+        }
+        .weixin a,
+        .weibo a,
+        .buluo a,
+        .luntan a {
+            position: absolute;
+            left: 16px;
+            top:20px;
+            height:102px;
+            width: 102px;
+        }
+
+        .weixin i,
+        .weibo i,
+        .buluo i,
+        .luntan i {
+            border: 1px solid;
+            border-radius: 50%;
+            background-color: #747474;
+            position: absolute;
+            height:102px;
+            width: 102px;
+        }
+        .weixin i:hover{
+            background-color: #62b900;
+        }
+        .weibo i:hover{
+            background-color: #f35d5d;
+        }
+        .buluo i:hover{
+            background-color:skyblue;
+        }
+        .luntan i:hover{
+            background-color:#ddbf67;
+        }
+        .weixin i{
+            background-position: 0 0;
+        }
+        .weibo i{
+            background-position:-104px 0;
+        }
+        .luntan i{
+            background-position: -208px 0;
+        }
+        .buluo i{
+            background-position:-312px 0;
+        }
+        .weixin p,
+        .weibo p,
+        .buluo p,
+        .luntan p {
+            height: 30px;
+            width: 133px;
+            line-height: 30px;
+            font-size:18px;
+            color: #000000;
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+        }
+        .footer-in-b{
+            margin-top: 20px;
+            background: url("images/2_nav-bg.png") no-repeat;
+            color: white;
+            font-weight: 700;
+            padding-top: 20px;
+            letter-spacing: 1px;
+        }
+        .footer-in-b div {
+            text-align: center;
+        }
+        .footer-in-b div a{
+            font-size: 12px;
+            margin:0 17px;
+            color: white;
+        }
+        .footer-in-b p{
+            font-size: 12px;
+            text-align: center;
+            line-height: 36px;
+        }
+    </style>
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        $(function () {
+            $(".chaTu").mouseover(function () {
+                $("#hidden").show();
+            });
+            $(".chaTu").mouseout(function () {
+                $("#hidden").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+<!--导航栏部分开始-->
+<div class="nav">
+    <div class="nav-in w">
+        <div class="nav-in-log">
+            <img src="images/logo.png" height="90" alt="">
+        </div>
+        <div class="nav-in-r">
+            <ul id="navLan">
+                <li id="homepage" onclick="javascript:location.href = 'index.html'">HomePage</li>
+                <li id="login" onclick="javascript:location.href = 'login.html'">Login</li>
+                <li id="signup" onclick="javascript:location.href = 'signup.html'">Sign Up</li>
+                <li id="tradecenter" onclick="javascript:location.href = 'tradecenter.html'">Trade Center</li>
+                <li id="news" onclick="javascript:location.href = 'news.html'">News</li>
+                <li id="aboutus" onclick="javascript:location.href = 'aboutus.html'">About Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--导航栏部分结束-->
+<div id="bg">
+    <div id="loginH">
+        <h1 class="H1">Login</h1>
+        <hr class="Hr">
+        <input type="text" placeholder="Input your account">
+        <input type="password" placeholder="Input your password">
+        <input type="submit" class="Submit" value="Login">
+        <br>
+        <span class="pass">Forget password？</span>
+        <hr class="Hr">
+        <span class="userName">New user？Sign Up</span>
+    </div>
+</div>
+<!--其他方式登录  开始-->
+<div class="saoMa">
+    <div class="box">
+        <div class="weixin" id="weix">
+            <a href="javascript:;">
+                <i class="chaTu"></i>
+            </a>
+            <p>Login with Wechat</p>
+        </div>
+        <div class="weibo" >
+            <a href="javascript:;">
+                <i class="chaTu"></i>
+            </a>
+            <p>Login with Sina</p>
+        </div>
+        <div class="luntan">
+            <a href="javascript:;">
+                <i class="chaTu"></i>
+            </a>
+            <p>Official Forum</p>
+        </div>
+        <div class="buluo" >
+            <a href="javascript:;">
+                <i class="chaTu"></i>
+            </a>
+            <p>Your Interets</p>
+        </div>
+        <div class="hidden" id="hidden">
+        </div>
+    </div>
+</div>
+<!--其他方式登录  结束-->
+
+<div class="footer-in-b">
+    <div>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Friendly Links</a>
+        <a href="#">Join Us</a>
+    </div>
+    <p>Copyright©2018 Upay. All Rights Reserved By Our Company</p>
+</div>
+</body>
+</html>
