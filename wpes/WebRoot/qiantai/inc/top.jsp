@@ -14,7 +14,8 @@ String path = request.getContextPath();
 	<meta http-equiv="expires" content="0"/>    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3"/>
 	<meta http-equiv="description" content="This is my page"/>
-	
+	<link rel="stylesheet" href="<%=path %>/css/index.css" type="text/css"/>
+    <link rel="stylesheet" href="<%=path %>/css/reset.css"/>
 	<link href="<%=path %>/css/qiantai.css" rel="stylesheet" type="text/css" media="screen" />
 
     <script type="text/javascript">
@@ -59,27 +60,34 @@ String path = request.getContextPath();
   </head>
   
   <body>
-	<div id="menu1">
-	    <br/><br/><br/><br/>
-		<div style="font-size:30px;margin-left: 20px;color: white">Game Market</div>
+	
+	
+	<div class="nav">
+	    <div class="nav-in w">
+	        <div class="nav-in-log">
+	            <img src="images/logo.png" height="90" alt="">
+	        </div>
+	        <div class="nav-in-r">
+	            <ul id="navLan">
+	                <li><a href="<%=path %>/index.action" style="font-size: 15px;font-family: 微软雅黑;">系统首页</a></li>
+					<li><a href="#" onClick="maijiaReg()" style="font-size: 15px;font-family: 微软雅黑;">卖家注册</a></li>
+					<li><a href="#" onClick="userReg()" style="font-size: 15px;font-family: 微软雅黑;">用户注册</a></li>
+					<c:if test="${sessionScope.userType !=2 }">
+					<li><a href="<%=path %>/qiantai/userinfo/userLogin.jsp" style="font-size: 15px;font-family: 微软雅黑;">用户登陆</a></li>
+					</c:if>
+					
+					
+					<c:if test="${sessionScope.userType ==2 }">
+					<li><a href="#" style="font-size: 15px;font-family: 微软雅黑;">欢迎您：${sessionScope.user.userName }</a></li>
+					<li><a href="<%=path %>/userLogout.action" style="font-size: 15px;font-family: 微软雅黑;">注销退出</a></li>
+					<li><a href="#" onClick="myCart()" style="font-size: 15px;font-family: 微软雅黑;">我的购物车</a></li>
+					<li><a href="#" onClick="myOrder()" style="font-size: 15px;font-family: 微软雅黑;">我的订单</a></li>
+					</c:if>
+	            </ul>
+	        </div>
+	    </div>
 	</div>
-	<div id="menu">
-		<ul>
-			<li><a href="<%=path %>/index.action" style="font-size: 15px;font-family: 微软雅黑;">系统首页</a></li>
-			<li><a href="#" onClick="maijiaReg()" style="font-size: 15px;font-family: 微软雅黑;">卖家注册</a></li>
-			<li><a href="#" onClick="userReg()" style="font-size: 15px;font-family: 微软雅黑;">用户注册</a></li>
-			<c:if test="${sessionScope.userType !=2 }">
-			<li><a href="<%=path %>/qiantai/userinfo/userLogin.jsp" style="font-size: 15px;font-family: 微软雅黑;">用户登陆</a></li>
-			</c:if>
-			
-			
-			<c:if test="${sessionScope.userType ==2 }">
-			<li><a href="#" style="font-size: 15px;font-family: 微软雅黑;">欢迎您：${sessionScope.user.userName }</a></li>
-			<li><a href="<%=path %>/userLogout.action" style="font-size: 15px;font-family: 微软雅黑;">注销退出</a></li>
-			<li><a href="#" onClick="myCart()" style="font-size: 15px;font-family: 微软雅黑;">我的购物车</a></li>
-			<li><a href="#" onClick="myOrder()" style="font-size: 15px;font-family: 微软雅黑;">我的订单</a></li>
-			</c:if>
-		</ul>
-	</div>
+	
+	
   </body>
 </html>
